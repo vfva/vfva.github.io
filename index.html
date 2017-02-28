@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href='http://fonts.googleapis.com/css?family=Exo:400,800' rel='stylesheet' type='text/css'>
+<link href="CSS/root.css" rel="stylesheet" type="text/css">
+<link href="CSS/dropdown.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="scripts/dropdown.js"></script>
+<script type="text/javascript">
+	var theSlides    = new Array();
+	var currentSlide = 0;
+	var inFade       = 0;
+	var slideDispSec = 6; // seconds to display each slide
+	var autoAdvance;
+
+	var indicatorUrlActive   = 'images/rotation/outline.png';
+	var indicatorUrlInactive = 'images/rotation/gray.png';
+	var indicatorIconSize    = 16;
+
+
+	/* Perform the initial setup of the slides and start the auto-advance timer */
+	function startSlides() {
+		var slideTray = document.getElementById('indexSlideTray');
+		if (slideTray) {
+			theSlidesRaw = slideTray.getElementsByTagName('div');
+			for(i=0; i<theSlidesRaw.length; i++) {
+				var thisSlide = theSlidesRaw[i];
+				if ((thisSlide.parentNode == slideTray) && (thisSlide.className == 'indexSlide')) {
+					// skip any DIVs that aren't directly under the tray (sub-divs) 
+					// or that aren't of the class 'indexSlide'
+					theSlides.push(thisSlide);
+				}
+			}
+			if (theSlides) {
+				// make the first slide the visible one
+				theSlides[0].style.opacity = 1;
+				theSlides[0].style.filter  = 'alpha(opacity = 100)';
+				theSlides[0].style.zIndex  = 1;
+			} else {
+				// alert('NoSlides');
+				// No slides found in slide tray
+			}
+		} else {
+			//alert('No Slide Tray Found');
+			// No slide tray found
+		}
+		drawIndicatorIcons(0);
+		setTimeout(autoadvanceSlide, (slideDispSec*1000));
+	}
+	
+	
+	/* Move to next slide automatically */
+	function autoadvanceSlide() {
+		if (inFade) {
+			// currently performing transition, ignore advance
+		} else {
+			var numberOfSlides = theSlides.length;
+			var nextSlide = (currentSlide + 1);
+			if (nextSlide >= numberOfSlides) {
+				nextSlide = 0;
+			}
+
+			selectSlide(nextSlide);
+		}
+	}
+	
+	
+	/* Select a slide to view */
+	function selectSlide(slideNumber) {
+		if (autoAdvance) {
+			// clear the autoadvance timer to reset it (later)
+			clearTimeout(autoAdvance);
+		}
+		var numberOfSlides = theSlides.length;
+		if (inFade) {
+			// currently in middle of transition, just ignore slide change
+		} else {
+			if ((slideNumber < numberOfSlides) && (slideNumber >= 0)) {
+				var newSlide = slideNumber;
+				drawIndicatorIcons(slideNumber);
+				crossfadeSlides(theSlides[currentSlide], theSlides[newSlide]);
+				currentSlide = newSlide;
+			} else {
+				// alert('Invalid slide');
+				// Invalid slide selected, set the inFade switch to cancel everything
+				inFade = 1;
+			}
+		}
+		// restart the auto-advance timer
+		autoAdvance = setTimeout(autoadvanceSlide, (slideDispSec*1000));
+	}
+	
+	
+	/* Performs the cross-fade effect - recursive function */
+	function crossfadeSlides(slideA, slideB) {
+		if (slideA.style.opacity > 0) {
+			// as long as slideA has any opacity, decrement it and keep going
+			inFade = 1;
+			
+			var opacA = Math.round(slideA.style.opacity * 100)-5;
+			var opacB = (100-opacA);
+			
+			slideA.style.opacity = opacA/100.0; // Moz/WebKit/etc opacity
+			slideB.style.opacity = opacB/100.0; // Moz/WebKit/etc opacity
+			
+			slideA.style.filter = 'alpha(opacity = ' + opacA + ')'; // IE opacity
+			slideB.style.filter = 'alpha(opacity = ' + opacB + ')'; // IE opacity
+			
+			setTimeout(function(){crossfadeSlides(slideA, slideB);}, 40);
+		} else {
+			// Once opacity is done, swap z-index values so clicks land in 
+			// appropriate DIVs
+			slideA.style.zIndex = 0;
+			slideB.style.zIndex = 1;
+			inFade = 0;
+		}
+	}
+
+	
+	/* Draw the little circle slide indicator icons */
+	function drawIndicatorIcons(selectedSlide) {
+		var numberOfSlides = theSlides.length;
+		var indicatorArea  = document.getElementById('indexSlideTrayIndicatorGraphic');
+		
+		var indicatorHTML  = '';
+		if (numberOfSlides && indicatorArea) {
+			for (i=0; i<numberOfSlides; i++) {
+				if (i==selectedSlide) {
+					indicatorHTML += "<img style='padding-left: 11px;' src='" + indicatorUrlActive + "' width='" + indicatorIconSize + "' height='" + indicatorIconSize + "' />";
+				} else {
+					indicatorHTML += "<a href='javascript: selectSlide(" + i + ");'><img style='padding-left: 11px;' src='" + indicatorUrlInactive + "' width='" + indicatorIconSize + "' height='" + indicatorIconSize + "' /></a>"
+				}
+			}
+		}
+		indicatorArea.innerHTML = indicatorHTML;
+	}
+	
+</script>
+
+
+
+<title>Victor-Farmington Volunteer Ambulance</title>
+</head>
+
+<body onload="startSlides();">
+<table border="0" cellspacing="0" cellpadding="0" class="root" align="center">
+  <tr>
+    <td class="header"><img src="images/indexHeader.jpg" width="995" height="117"></td>
+  </tr>
+  <tr>
+    <!--#include virtual="includes/navigation.html" -->
+  </tr>
+  <tr>
+    <td class="indexContent">
+    <div class="indexRotation">
+   <div id="indexSlideTray" style="width: 955px; height: 430px;">
+    
+	<div class="indexSlide"> <img src="images/rotation/index1.jpg" width="995" height="430" border="0" />
+		<!--<map id="sOneMap" name="sOneMap">
+			<area shape="rect" coords="780,20,960,80" href="javascript: alert('foo');" border="0"></area>
+		</map>-->
+	</div>
+  <div class="indexSlide"> <img src="images/rotation/index2.jpg" width="995" height="430" />
+	</div>
+  <div class="indexSlide"> <img src="images/rotation/index3.jpg" width="995" height="430" />
+	</div>
+  <div class="indexSlide"> <a href="donate.html"><img src="images/rotation/index4.jpg" width="995" height="430"></a>
+	</div>
+	
+	<div id="indexSlideTrayIndicatorGraphic"></div>
+</div>
+    </div>
+    
+   <!-- <img src="images/indexPeople.jpg" width="605" height="364" class="indexFloat">
+    <p class="indexCopy">For over 40 years, Victor Farmington Volunteer Ambulance has served the towns of <strong>Victor</strong> and <strong>Farmington</strong> as well as the suberbs of Rochester, providing exceptional emergency medical services.</p>
+    <a href="donate.html"><img src="images/indexDonateBTN.jpg" width="350" height="145" class="indexDonate"></a>--></td>
+  </tr>
+  <tr>
+  <td class="indexExtra">
+<img src="images/indexMessage.jpg" width="995" height="74"><br>
+<br>
+</td>
+  </tr>
+  <tr>
+    <td class="footer" style="border: none;"><a href="http://www.facebook.com/victorfarmingtonambulance" target="_blank"><img src="images/facebookLike.png" width="227" height="41" class="facebook"></a> Copyright © Victor Farmington Volunteer Ambulance Corps</td>
+  </tr>
+</table>
+
+
+
+
+</body>
+</html>

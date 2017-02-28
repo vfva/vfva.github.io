@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href='http://fonts.googleapis.com/css?family=Exo:400,800' rel='stylesheet' type='text/css'>
+<link href="CSS/root.css" rel="stylesheet" type="text/css">
+<link href="CSS/dropdown.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="scripts/dropdown.js"></script>
+<title>Victor-Farmington Volunteer Ambulance</title>
+<script type="text/javascript">
+	function checkForm(theForm) {
+		
+		var eventYear     = getSelectedValue('year');
+		var eventMonth    = getSelectedValue('month');
+		var eventDay      = getSelectedValue('day');
+		var eventLocation = getSelectedValue('location');
+		var contactName   = getSelectedValue('contact');
+		var contactPhone  = getSelectedValue('phone');
+		
+		var formOK = true;
+		
+		if ((eventYear == '') || (eventMonth == '') || (eventDay == '')) {
+			formOK = false;
+			alert('Please enter the event date.');
+		} else if (eventLocation == '') {
+			formOK = false;
+			alert('Please enter the event location information.');
+		} else if ((contactName == '') || (contactPhone == '')) {
+			formOK = false;
+			alert('Please enter contact information (name/phone).');
+		}
+		
+		return formOK;
+	}
+	function getSelectedValue(formFieldID) {
+		var theFormField = document.getElementById(formFieldID);
+		var theReturnValue;
+		if (theFormField) {
+			if (theFormField.options) {
+				var theOptions = theFormField.options;
+				for(i=0; i<theOptions.length; i++) {
+					if (theOptions[i].selected) {
+						theReturnValue = theOptions[i].value;
+						break;
+					}
+				}
+			} else {
+				theReturnValue = theFormField.value;
+			}
+		} else {
+			theReturnValue = 'n/a';
+		}
+		return theReturnValue;
+	}
+	
+	function prepForm() {
+		var jsEnabledField = document.getElementById('jsEnabled');
+		jsEnabledField.value = 1;
+	}
+	
+</script>
+<style type="text/css">
+	td.requiredStatus {
+		font-weight: bold;
+		color: #c00;
+		padding-right: 10px;
+	}
+</style>
+</head>
+
+<body onload="prepForm();">
+<table border="0" cellspacing="0" cellpadding="0" class="root" align="center">
+  <tr>
+    <td class="header"><a href="index.html"><img src="images/header.jpg" width="995" height="84"></a></td>
+  </tr>
+  <tr>
+    <!--#include virtual="includes/navigation.html" -->
+  </tr>
+  <tr>
+    <td class="content"><p class="headlines"><strong>Services:</strong> Special Event Standby</p>
+    
+    <p>We respond to many special events for standby services including Stuarts International Horse Trials, the Ganondagan Festival, Victor Central School District events, and during the holiday season at East View Mall. At these events, which typically require at least one ambulance to be present, we provide a crew to cover the potential risk of increased call volume. To request a standby, your event must be within the Town of Farmington or Victor. </p>
+   <img src="images/banners/specialEvents2.jpg" width="349" height="553" class="rightFloats2">
+    <p><span class="subheads">Community Standby Request</span></p>
+
+<!-- request form -->
+<form method="post" action="eventRequest.php" onsubmit="return checkForm(this);">
+	<input type="hidden" name="jsEnabled" id="jsEnabled" value="0" />
+	<table border="0" cellspacing="0" cellpadding="0" class="eventRequest">
+		<tr>
+			<td width="164">Date:</td>
+			<td class="requiredStatus">*</td>
+			<td width="436">
+				<select name="month" id="month">
+					<option value=""></option>
+					<option value="1">January</option>
+					<option value="2">February</option>
+					<option value="3">March</option>
+					<option value="4">April</option>
+					<option value="5">May</option>
+					<option value="6">June</option>
+					<option value="7">July</option>
+					<option value="8">August</option>
+					<option value="9">September</option>
+					<option value="10">October</option>
+					<option value="11">November</option>
+					<option value="12">December</option>
+				</select>
+				<select name="day" id="day">
+					<option value=""></option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+					<option value="13">13</option>
+					<option value="14">14</option>
+					<option value="15">15</option>
+					<option value="16">16</option>
+					<option value="17">17</option>
+					<option value="18">18</option>
+					<option value="19">19</option>
+					<option value="20">20</option>
+					<option value="21">21</option>
+					<option value="22">22</option>
+					<option value="23">23</option>
+					<option value="24">24</option>
+					<option value="25">25</option>
+					<option value="26">26</option>
+					<option value="27">27</option>
+					<option value="28">28</option>
+					<option value="29">29</option>
+					<option value="30">30</option>
+					<option value="31">31</option>
+				</select>
+				<select name="year" id="year">
+					<option value=""></option>
+					<option value="2012">2012</option>
+					<option value="2013">2013</option>
+					<option value="2014">2014</option>
+					<option value="2015">2015</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Location:</td>
+			<td class="requiredStatus">*</td>
+			<td>
+				<textarea name="location" id="location" cols="45" rows="2"></textarea>
+				<div style="font-weight: normal;">
+					<input type="radio" name="indoorOutdoor" value="Indoor">Indoor Event
+					&#160;&#160;&#160;
+					<input type="radio" name="indoorOutdoor" value="Outdoor">Outdoor Event
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>Special Instructions:</td>
+			<td class="requiredStatus">&#160;</td>
+			<td>
+				<textarea name="specialInstructions" id="specialInstructions" cols="45" rows="2"></textarea>
+				<div style="color: #999; font-size: 9px; font-weight: normal;">
+					Note any special location and/or parking instructions
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>Start Time:</td>
+			<td class="requiredStatus">&#160;</td>
+			<td>
+				<input name="time" type="text" id="time" size="6" />
+				<select name="ampm" id="ampm">
+					<option value="">-</option>
+					<option value="AM">AM</option>
+					<option value="PM">PM</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Length of Event:</td>
+			<td class="requiredStatus">&#160;</td>
+			<td><input name="eventLength" type="text" id="eventLength" size="16" /></td>
+		</tr>
+		<tr>
+			<td>Description of Event:</td>
+			<td class="requiredStatus">&#160;</td>
+			<td><textarea name="description" id="description" cols="45" rows="3"></textarea></td>
+		</tr>
+		<tr>
+			<td>Expected Attendance:</td>
+			<td class="requiredStatus">&#160;</td>
+			<td><input name="attendance" type="text" id="attendance" size="16" /></td>
+		</tr>
+		<tr>
+			<td>Expected Hazards:</td>
+			<td class="requiredStatus">&#160;</td>
+			<td><textarea name="hazards" id="hazards" cols="45" rows="2"></textarea></td>
+		</tr>
+		<tr>
+			<td>Contact Name:</td>
+			<td class="requiredStatus">*</td>
+			<td><input name="contact" type="text" id="contact" size="26" /></td>
+		</tr>
+		<tr>
+			<td>Contact Number:</td>
+			<td class="requiredStatus">*</td>
+			<td><input name="phone" type="text" id="phone" size="26" /></td>
+		</tr>
+		<tr>
+			<td>Other&#160;Personnel:</td>
+			<td class="requiredStatus">&#160;</td>
+			<td>
+				<input type="checkbox" name="personnel" id="personnel" value="1" />
+				<span style="font-weight: normal;">There will be other emergency personnel on location.</span>
+			</td>
+		</tr>
+		<tr>
+			<td>&#160;</td>
+			<td class="requiredStatus">&#160;</td>
+			<td>
+				<br />
+				<input type="submit" name="Submit" id="Submit" value="Submit">
+			</td>
+		</tr>
+	</table>
+</form>
+<br />&#160;<br />
+
+<!-- /request form -->
+
+    <p><strong>If you would prefer to send a written request, it should be sent 30 days prior to the event date and correspondence should be sent to <a href="mailto:operations@victorfarmingtonambulance.org">Operations@victorfarmingtonambulance.org</a> or by calling us at (585) 202-1708. </strong></p></td>
+  </tr>
+  <tr>
+    <td class="footer">Copyright &copy; Victor Farmington Volunteer Ambulance Corps</td>
+  </tr>
+</table>
+
+
+
+
+</body>
+</html>

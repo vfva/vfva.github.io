@@ -1,0 +1,296 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body{
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	background-color:#778c9e;
+}
+
+td{
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	vertical-align:top;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:11px;
+}
+
+img{
+	border: none;
+}
+
+p{
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+}
+
+a{
+	text-decoration: none;
+}
+
+.root{
+	width: 995px;
+	background-color:#fff;
+}
+
+.header{
+	height: 84px;
+	border-style: solid;
+	border-width: 0px 0px 2px 0px;
+	border-color:#e6e6e6;
+}
+
+.indexFloat{
+	float: right;
+	vertical-align: bottom;
+}
+
+.indexDonate{
+	margin: 0px 0px 0px 28px;
+}
+
+.indexCopy{
+	font-size: 14px;
+	color:#000;
+	line-height:28px;
+}
+
+.indexContent{
+	border-style: solid;
+	border-width: 0px 0px 12px 0px;
+	border-color:#d1d2d4;
+
+}
+
+.indexExtra{
+	background-color:#005dab;
+	border-style: solid;
+	border-width: 4px 0px 0px 0px;
+  border-color:#fff;
+	padding: 20px 0px 10px 0px;
+}
+
+
+
+.nav{
+	height: 23px;
+	background-color:#d0d0d2;
+	border-style: solid;
+	border-width: 0px 0px 2px 0px;
+	border-color:#fff;
+	line-height: 21px;
+	padding: 0px 0px 0px 16px;
+}
+
+
+
+.content{
+	background-image: url(../images/back-Content.jpg);
+	background-repeat:repeat-x;
+	background-position:top;
+	border-style: solid;
+	border-width: 0px 0px 12px 0px;
+	border-color:#d1d2d4;
+	color:#111;
+	line-height:22px;
+	padding: 30px 0px 0px 0px;
+}
+
+.content p{
+	padding: 0px 20px 15px 30px;
+	margin: 0px 0px 0px 0px;
+}
+
+.content p a{
+	font-weight: bold;
+	color:#005dab;
+}
+
+.content p a:hover{
+	color:#666;
+}
+
+.content p.headlines{
+	font-family: 'Exo', sans-serif;
+	font-size:33px;
+	color:#005dab;
+
+}
+
+.content p.altHeadlines{
+	font-family: 'Exo', sans-serif;
+	font-size:30px;
+	color:#dc291e;
+	line-height:36px;
+
+}
+
+.subheads{
+	color:#dc291e;
+	font-weight: bold;
+	font-size:12px;
+}
+
+.blueSubheads{
+	color:#005dab;
+	font-weight: bold;
+	font-size:12px;
+}
+
+.rightFloats{
+	float: right;
+	margin: 0px 10px 30px 0px;
+}
+
+.rightFloats2{
+	float: right;
+	margin: 0px 10px 30px 20px;
+	border-style: solid;
+	border-width: 1px 1px 1px 1px;
+	border-color:#005dab;
+}
+
+
+.justRed{
+	color:#dc291e;
+	font-weight: bold;
+}
+
+
+.facebook{
+	float: right;
+	margin: 0px 30px 0px 0px;
+	border: none;
+}
+
+
+.list1{
+	width: 350px;
+	margin: 0px 0px 15px 30px;
+}
+.list1 td{
+	line-height: 25px;
+}
+
+.list1 td em{
+	color:#dc291e;
+}
+
+.list2{
+	width: 930px;
+	margin: 0px 0px 15px 30px;
+}
+.list2 td{
+	line-height: 25px;
+}
+
+.list2 td em{
+	color:#dc291e;
+}
+
+.list3{
+	width: 550px;
+	margin: 0px 0px 15px 30px;
+}
+.list3 td{
+	line-height: 25px;
+}
+
+.list3 td em{
+	color:#dc291e;
+}
+
+ul{
+	padding: 0px 0px 10px 50px;
+	margin: 0px 0px 0px 0px;
+}
+
+li{
+	padding: 0px 50px 7px 0px;
+	margin: 0px 0px 0px 0px;
+	color:#dc291e;
+}
+
+li span{
+	color:#111;
+}
+
+
+.eventRequest{
+	width: 575px;
+	margin: 0px 0px 0px 30px;
+}
+
+
+.eventRequest td{
+	vertical-align: top;
+	font-weight: bold;
+	border-style: solid;
+	border-width: 1px 0px 0px 0px;
+	border-color:#d1d2d4;
+	line-height:22px;
+	padding: 4px 0px 4px 0px;
+}
+
+
+.footer{
+	height: 41px;
+	background-image:url(../images/back-Footer.jpg);
+	background-repeat:repeat-x;
+	background-position:top;
+	line-height:41px;
+	color:#FFF;
+	font-size:10px;
+	border-style: solid;
+	border-width: 4px 0px 0px 0px;
+	border-color:#fff;
+	padding: 0px 0px 0px 30px;
+
+}
+
+.indexRotation{
+	height: 430px;
+	width:995px;
+	background-image:url(images/back-Rotation.jpg);
+	background-position:top;
+	background-repeat:no-repeat;
+}
+
+
+.indexSlide {
+		position: absolute;
+		width: 995px;
+		height: 430px;
+		overflow: hidden;
+		opacity: 0;
+		filter: alpha(opacity = 0);
+		z-index: 0;
+		margin: 0px 0px 0px 0px;
+	}
+
+	#indexSlideTrayIndicatorGraphic {
+		position: relative;
+		height: 15px;
+		width: 150px;
+		text-align: right;
+		z-index: 2;
+		top: 400px;
+		left: 830px;
+	}
+
+
+
+.btn.btn-primary{
+	background-color: #005dab;
+	padding:10px 20px;
+	border-radius: 3px;
+	color: #fcfcfc;
+
+}
+
+
+.btn.btn-primary:hover{
+	background-color: #004c9a;
+	color: #fff;
+
+}
