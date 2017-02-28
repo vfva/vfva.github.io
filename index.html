@@ -147,7 +147,7 @@
   <tr>
     <td class="header"><img src="images/indexHeader.jpg" width="995" height="117"></td>
   </tr>
-  <tr>
+  <tr id="dw_Nav">
     <!--#include virtual="includes/navigation.html" -->
     {% include_relative includes/navigation.html %}
     <script>
@@ -156,7 +156,7 @@
 		xhr.onreadystatechange= function() {
 		    if (this.readyState!==4) return;
 		    if (this.status!==200) return; // or whatever error handling you want
-		    print(this.responseText);
+		    document.getElementById('dw_Nav').innerHTML= this.responseText;
 		};
 		xhr.send();
 	</script>
