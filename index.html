@@ -150,6 +150,16 @@
   <tr>
     <!--#include virtual="includes/navigation.html" -->
     {% include_relative includes/navigation.html %}
+    <script>
+		var xhr= new XMLHttpRequest();
+		xhr.open('GET', 'includes/navigation.html', true);
+		xhr.onreadystatechange= function() {
+		    if (this.readyState!==4) return;
+		    if (this.status!==200) return; // or whatever error handling you want
+		    print(this.responseText);
+		};
+		xhr.send();
+	</script>
   </tr>
   <tr>
     <td class="indexContent">
