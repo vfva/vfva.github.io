@@ -26,7 +26,7 @@
 			for(i=0; i<theSlidesRaw.length; i++) {
 				var thisSlide = theSlidesRaw[i];
 				if ((thisSlide.parentNode == slideTray) && (thisSlide.className == 'indexSlide')) {
-					// skip any DIVs that aren't directly under the tray (sub-divs) 
+					// skip any DIVs that aren't directly under the tray (sub-divs)
 					// or that aren't of the class 'indexSlide'
 					theSlides.push(thisSlide);
 				}
@@ -47,8 +47,8 @@
 		drawIndicatorIcons(0);
 		setTimeout(autoadvanceSlide, (slideDispSec*1000));
 	}
-	
-	
+
+
 	/* Move to next slide automatically */
 	function autoadvanceSlide() {
 		if (inFade) {
@@ -63,8 +63,8 @@
 			selectSlide(nextSlide);
 		}
 	}
-	
-	
+
+
 	/* Select a slide to view */
 	function selectSlide(slideNumber) {
 		if (autoAdvance) {
@@ -89,26 +89,26 @@
 		// restart the auto-advance timer
 		autoAdvance = setTimeout(autoadvanceSlide, (slideDispSec*1000));
 	}
-	
-	
+
+
 	/* Performs the cross-fade effect - recursive function */
 	function crossfadeSlides(slideA, slideB) {
 		if (slideA.style.opacity > 0) {
 			// as long as slideA has any opacity, decrement it and keep going
 			inFade = 1;
-			
+
 			var opacA = Math.round(slideA.style.opacity * 100)-5;
 			var opacB = (100-opacA);
-			
+
 			slideA.style.opacity = opacA/100.0; // Moz/WebKit/etc opacity
 			slideB.style.opacity = opacB/100.0; // Moz/WebKit/etc opacity
-			
+
 			slideA.style.filter = 'alpha(opacity = ' + opacA + ')'; // IE opacity
 			slideB.style.filter = 'alpha(opacity = ' + opacB + ')'; // IE opacity
-			
+
 			setTimeout(function(){crossfadeSlides(slideA, slideB);}, 40);
 		} else {
-			// Once opacity is done, swap z-index values so clicks land in 
+			// Once opacity is done, swap z-index values so clicks land in
 			// appropriate DIVs
 			slideA.style.zIndex = 0;
 			slideB.style.zIndex = 1;
@@ -116,12 +116,12 @@
 		}
 	}
 
-	
+
 	/* Draw the little circle slide indicator icons */
 	function drawIndicatorIcons(selectedSlide) {
 		var numberOfSlides = theSlides.length;
 		var indicatorArea  = document.getElementById('indexSlideTrayIndicatorGraphic');
-		
+
 		var indicatorHTML  = '';
 		if (numberOfSlides && indicatorArea) {
 			for (i=0; i<numberOfSlides; i++) {
@@ -134,7 +134,7 @@
 		}
 		indicatorArea.innerHTML = indicatorHTML;
 	}
-	
+
 </script>
 
 
@@ -149,12 +149,13 @@
   </tr>
   <tr>
     <!--#include virtual="includes/navigation.html" -->
+    {% include_relative includes/navigation.html %}
   </tr>
   <tr>
     <td class="indexContent">
     <div class="indexRotation">
    <div id="indexSlideTray" style="width: 955px; height: 430px;">
-    
+
 	<div class="indexSlide"> <img src="images/rotation/index1.jpg" width="995" height="430" border="0" />
 		<!--<map id="sOneMap" name="sOneMap">
 			<area shape="rect" coords="780,20,960,80" href="javascript: alert('foo');" border="0"></area>
@@ -166,11 +167,11 @@
 	</div>
   <div class="indexSlide"> <a href="donate.html"><img src="images/rotation/index4.jpg" width="995" height="430"></a>
 	</div>
-	
+
 	<div id="indexSlideTrayIndicatorGraphic"></div>
 </div>
     </div>
-    
+
    <!-- <img src="images/indexPeople.jpg" width="605" height="364" class="indexFloat">
     <p class="indexCopy">For over 40 years, Victor Farmington Volunteer Ambulance has served the towns of <strong>Victor</strong> and <strong>Farmington</strong> as well as the suberbs of Rochester, providing exceptional emergency medical services.</p>
     <a href="donate.html"><img src="images/indexDonateBTN.jpg" width="350" height="145" class="indexDonate"></a>--></td>
